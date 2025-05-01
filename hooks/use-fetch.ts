@@ -1,14 +1,12 @@
 import { useState } from "react";
 import { toast } from "sonner";
 
-type AsyncCallback<TArgs extends any[], TResult> = (...args: TArgs) => Promise<TResult>;
+const useFetch = (cb) => {
+  const [data, setData] = useState(undefined);
+  const [loading, setLoading] = useState(null);
+  const [error, setError] = useState(null);
 
-const useFetch<TArgs extends any[], TResult> = (cb: (...args: TArgs) => Promise<TResult>) => {
-  const [data, setData] = useState<TResult | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean | null>(null);
-  const [error, setError] = useState<Error | null>(null);
-
-  const fn = async (...args: TArgs) => {
+  const fn = async (...args) => {
     setLoading(true);
     setError(null);
 
@@ -16,7 +14,7 @@ const useFetch<TArgs extends any[], TResult> = (cb: (...args: TArgs) => Promise<
       const response = await cb(...args);
       setData(response);
       setError(null);
-    } catch (error: Error) {
+    } catch (error) {
       const err = error instanceof Error ? error : new Error("Unknown error");
       setError(error);
       toast.error(error.message);
