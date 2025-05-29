@@ -18,7 +18,7 @@ import {
 } from "../components/ui/select";
 import { Switch } from "../components/ui/switch";
 import { createAccount } from "../actions/dashboard";
-import { accountSchema } from "../app/lib/page";
+import { accountSchema } from "../app/lib/schema";
 
 export function CreateAccountDrawer({ children } : { children : React.ReactNode}) {
   const [open, setOpen] = useState(false);

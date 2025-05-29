@@ -4,9 +4,10 @@ type Category = {
     type: string;
     color: string; 
     icon: string;
+    subcategories?: string[];
 }
 
-export const defaultCategories = [
+export const defaultCategories: Category[] = [
     // Income Categories
     {
         id: "salary",

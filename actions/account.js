@@ -1,9 +1,19 @@
 "use server";
 // responsible for all the server actions
-import { db } from "@lib/prisma";
+import { db } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { verifyUser, serializeTransaction } from "./dashboard";
+import { verifyUser } from "./dashboard";
 
+const serializeTransaction = (obj) => {
+  const serialized = { ...obj };
+  if (obj.balance) {
+    serialized.balance = obj.balance.toNumber();
+  }
+  if (obj.amount) {
+    serialized.amount = obj.amount.toNumber();
+  }
+  return serialized;
+};
 
 export async function getAccountWithTransactions(accountId) {
   verifyUser()

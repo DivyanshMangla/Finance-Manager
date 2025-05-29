@@ -3,7 +3,7 @@
 
 import aj from "@/lib/arcjet";
 import { db } from "@/lib/prisma";
-import { request } from "@arcjet/next";
+// import { request } from "@arcjet/next";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -62,7 +62,7 @@ export async function createAccount(data) {
     if (!userId) throw new Error("Unauthorized");
 
     // Get request data for ArcJet
-    const req = await request();
+    // const req = await request();
 
     // Check rate limit
     const decision = await aj.protect(req, {

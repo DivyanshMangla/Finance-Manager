@@ -52,10 +52,12 @@ const Header = async () => {
                         </SignedIn>
                     </div>
                     <SignedOut>
-                        <SignInButton forceRedirectUrl="/dashboard">
-                            <Button variant="outline"> Login</Button>
-                        </SignInButton>
-                        <SignUpButton />
+                        <div className='space-x-3'>
+                            <SignInButton forceRedirectUrl="/dashboard">
+                                <Button variant="outline"> Login</Button>
+                            </SignInButton>
+                            <SignUpButton />
+                        </div>
                     </SignedOut>
                     <SignedIn>
                         <UserButton appearance={{
