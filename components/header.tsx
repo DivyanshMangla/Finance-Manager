@@ -4,10 +4,10 @@ import Link from 'next/link'
 import React from 'react'
 import { Button } from './ui/button'
 import { LayoutDashboard, PenBox } from 'lucide-react'
-import { checkUser } from '../lib/checkuser'
+
 
 const Header = async () => {
-    await checkUser()
+    
     return (
         <header className='fixed top-0 w-full bg-white-800 backdrop-blur-md z-50 border-b'>
             <nav className='container mx-auto py-4 flex items-center justify-between'>
@@ -36,7 +36,7 @@ const Header = async () => {
                 <div className='flex flex-row'>
                     <div className='flex items-center space-x-4'>
                         <SignedIn>
-                            <Link href={'/dashboard'} className='text-gray-600 hover:text-blue-600 flex items-center gap-2'>
+                            <Link href="/dashboard" className='text-gray-600 hover:text-blue-600 flex items-center gap-2'>
                                 <Button variant='outline'>
                                     <LayoutDashboard size={18} />
                                     <span className='hidden md:inline' >Dashboard</span>
